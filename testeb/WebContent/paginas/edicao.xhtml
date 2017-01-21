@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:u="http://java.sun.com/jsf/core"
+	xmlns:f="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Edição de mercadoria</title>
+</h:head>
+
+<f:composition template="/template/comum.xhtml">
+	<f:define name="titulo">sistema de Mercadorias</f:define>
+	<f:define name="corpo">
+		<h1>Edição de mercadoria</h1>
+		<h:form>
+			<h:messages />
+			<h:panelGrid columns="2">
+				<h:inputHidden id="codmercadoria"
+					value="#{mercadoriabean.mercadoria.codmercadoria}" />
+				<h:outputText />
+
+				<h:outputLabel value="Nome:" for="nomemercadoria" />
+				<h:inputText id="nomemercadoria" label="nome"
+					value="#{mercadoriabean.mercadoria.nomemercadoria}" required="true"
+					size="60" maxlength="60">
+				
+						<u:validateLength minimum="3"/>
+					</h:inputText>
+
+				<h:outputLabel value="Quantidade:" for="quantidade" />
+				<h:inputText id="quantidade" label="quantidade"
+					value="#{mercadoriabean.mercadoria.quantidade}" required="true"
+					size="9">
+					<u:validateDoubleRange minimum="1"/>
+				</h:inputText>
+
+				<h:outputLabel value="Preço:" for="preco" />
+				<h:inputText id="preco" label="preço" value="#{mercadoriabean.mercadoria.preco}"
+					size="9" required="true" >
+					<u:convertNumber maxFractionDigits="2" />
+					<u:validateDoubleRange minimum="1"/>
+				</h:inputText>
+
+				<h:outputLabel value="Tipo de negocio:" for="tiponegocio" />
+
+				<h:selectOneListbox id="tiponegocio" required="true" label="tipo de negocio"
+					value="#{mercadoriabean.mercadoria.tiponegocio}">
+					<u:selectItems value="#{mercadoriabean.tiponegocios}" />
+				</h:selectOneListbox>
+
+				<h:outputText />
+				<h:commandButton action="#{mercadoriabean.salvar}" value="Salvar" />
+
+			</h:panelGrid>
+		</h:form>
+	</f:define>
+</f:composition>
+</html>

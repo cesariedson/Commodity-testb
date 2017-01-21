@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+body,td,th{
+	font-family: :Verdana,Arial,Heveltica,sans-serif;
+	font-size: 12px;
+}
+th{
+	background: #7fffd4;
+	min-height: 25px;
+	padding: 3px;
+}
+img{
+	border: 0px;
+}
+#conteiner{
+	width:770px;
+	height:100%;
+	margin: 0 auto;
+	min-height: 600px;
+}
+#titulo{
+	font-family:Verdana;
+	float:left;
+	font-size: 25pt;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+#corpo{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+#rodape{
+	background: #0080c0;
+	height: 50px;
+	margin-top: 5px;
+	padding: 10px;
+	text-align: center;
+}

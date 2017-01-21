@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:u="http://java.sun.com/jsf/core"
+	xmlns:f="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Mercadorias</title>
+</h:head>
+
+<f:composition template="/template/comum.xhtml">
+	<f:define name="titulo">Sistema de mercadorias</f:define>
+	<f:define name="corpo">
+		<h1>Esta pagina é de mercadorias</h1>
+		<h:form>
+			<h:commandLink action="#{mercadoriabean.editar}">
+			Clique aqui para adicionar uma mercadoria.
+		</h:commandLink>
+		</h:form>
+		<h:form>
+			<h:dataTable value="#{mercadoriabean.mercadorias}" var="mercadoria"
+				rules="rows" cellpadding="5" cellspacing="5">
+				<u:facet name="caption">
+				Nesta lista ao clicar nas figuras voce pode editar e excluir mercadorias.
+			</u:facet>
+				<u:facet name="header">Listagem de mercadorias</u:facet>
+				<u:facet name="footer">Fim da listagem</u:facet>
+				<h:column>
+					<u:facet name="header">Nome</u:facet>
+				#{mercadoria.nomemercadoria}
+			</h:column>
+				<h:column>
+					<u:facet name="header">Quant</u:facet>
+				#{mercadoria.quantidade}
+			</h:column>
+				<h:column>
+					<u:facet name="header">Preço</u:facet>
+				#{mercadoria.preco}
+			</h:column>
+				<h:column>
+					<u:facet name="header">Tipo de Negocio</u:facet>
+				#{mercadoria.tiponegocio}
+			</h:column>
+				<h:column>
+					<u:facet name="header">Editar</u:facet>
+					<h:commandLink action="#{mercadoriabean.editar}">
+						<h:graphicImage library="imagens" style="border:0"
+							name="edicao.png" />
+						<u:setPropertyActionListener value="#{mercadoria}"
+							target="#{mercadoriabean.mercadoria}" />
+					</h:commandLink>
+				</h:column>
+				<h:column>
+					<u:facet name="header">Excluir</u:facet>
+					<h:commandLink action="#{mercadoriabean.excluir}"
+						onclick="if(!confirm('Deseja excluir #{mercadoria.nomemercadoria} ?')) return false">
+						<h:graphicImage library="imagens" style="border:0"
+							name="excluir.png" />
+						<u:setPropertyActionListener value="#{mercadoria}"
+							target="#{mercadoriabean.mercadoria}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+
+	</f:define>
+</f:composition>
+</html>
